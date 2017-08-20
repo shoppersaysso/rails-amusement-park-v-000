@@ -1,0 +1,28 @@
+<%= form_for(@attraction) do |f| %>
+  <% if @attraction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attraction.errors.count, "error") %> prohibited this attraction from being saved:</h2>
+
+      <ul>
+      <% @attraction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <p><%= f.label :name %>
+       <%= f.text_field :name %><p/>
+    <p><%= f.label :tickets %>
+       <%= f.text_field :tickets %><p/>
+    <p><%= f.label :nausea_rating %>
+       <%= f.number_field :nausea_rating %><p/>
+    <p><%= f.label :happiness_rating %>
+        <%= f.number_field :happiness_rating %><p/>
+    <p><%= f.label :min_height%>
+       <%= f.number_field :min_height%><p/>
+
+    <%= f.submit %>
+  </div>
+<% end %>

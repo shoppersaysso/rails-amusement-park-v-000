@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Attractions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attractions.each do |attraction| %>
+      <tr>
+        <th>Name</th>
+        <th>Tickets</th>
+        <th>Details</th>
+      </tr>
+      <tr>
+        <td><%= attraction.name %></td>
+        <td><%= attraction.tickets %></td>
+
+        <% if current_user.admin %>
+            <td><%= link_to 'Edit Attraction', edit_attraction_path(attraction) %><td>
+            <td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %><td>
+        <% else %>
+            <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %><td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+    <% if current_user.admin %>
+        <td><%= link_to 'New Attraction', new_attraction_path %><td>
+    <% end %>
